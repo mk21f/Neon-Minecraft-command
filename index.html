@@ -4,37 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>マイクラコマンド集トップ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
 <style>
   body {
-    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
   }
 
+  /* ▼ ヘッダー（画像メニュー） */
   .header {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     padding: 10px 20px;
-  }
-  .site-logo {
-    height: 50px;
   }
   .navbar {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
   }
-  .navbar a {
-    text-decoration: none;
-    color: #2196F3;
-    font-weight: bold;
-    font-size: 14px;
-  }
+  .nav-logo-big { height: 50px; }
+  .nav-logo-small { height: 40px; }
   .navbar span {
     color: #666;
+    font-weight: bold;
   }
 
+  /* ▼ 元のTOPページデザイン */
   .container {
     max-width: 600px;
     margin: 40px auto;
@@ -86,19 +84,30 @@
   }
 </style>
 </head>
+
 <body>
 
+<!-- ▼ 画像ロゴのナビメニュー -->
 <div class="header">
-  <img src="images/TOP textlogo.png" class="site-logo" alt="TOPロゴ">
+  <a href="./">
+    <img src="images/TOP textlogo.png" class="nav-logo-big" alt="TOP">
+  </a>
+
   <nav class="navbar">
-    <a href="./">TOP</a><span>｜</span>
-    <a href="special/">特殊コマンド</a><span>｜</span>
-    <a href="items/">アイテム</a><span>｜</span>
-    <a href="enemy/">敵対MOB</a><span>｜</span>
-    <a href="friendly/">友好MOB</a>
+    <a href="special/"><img src="images/special textlogo.png" class="nav-logo-small" alt="特殊"></a>
+    <span>｜</span>
+
+    <a href="items/"><img src="images/item textlogo.png" class="nav-logo-small" alt="アイテム"></a>
+    <span>｜</span>
+
+    <a href="enemy/"><img src="images/enemy textlogo.png" class="nav-logo-small" alt="敵対"></a>
+    <span>｜</span>
+
+    <a href="friendly/"><img src="images/friendly textlogo.png" class="nav-logo-small" alt="友好"></a>
   </nav>
 </div>
 
+<!-- ▼ TOPページ本体 -->
 <div class="container">
   <div class="card">
     <h1>マイクラ コマンド集</h1>
