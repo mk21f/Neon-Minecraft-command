@@ -1,12 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>マイクラコマンド集TOP</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+  /* ▼ ヘッダー全体 ▼ */
+  .header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+  }
+
+  /* 左端ロゴ：高さ60px */
+  .logo-main {
+    height: 60px;
+  }
+
+  /* メニュー画像：高さ100px */
+  .logo-small {
+    height: 100px;
+    vertical-align: middle;
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .navbar a {
+    text-decoration: none;
+  }
+
+  /* ▼ メイン部分 ▼ */
+  .container {
+    max-width: 650px;
+    margin: 40px auto;
+    text-align: center;
+  }
+
+  .card {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  .button {
+    display: block;
+    text-decoration: none;
+    background-color: #2196F3;
+    color: #fff;
+    padding: 14px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+</style>
+</head>
+
+<body>
+
 <!-- ▼ ヘッダー（画像メニュー） -->
 <div class="header">
 
-  <!-- 左端の大きなロゴ → TOPへリンク（画像変更） -->
+  <!-- 左端ロゴ（TOPに戻る） -->
   <a href="./">
     <img src="images/neon_rogo_solo.png" class="logo-main" alt="TOPロゴ">
   </a>
 
-  <!-- 右側のメニュー画像 -->
+  <!-- 右側のメニュー画像群 -->
   <nav class="navbar">
 
     <a href="./">
@@ -32,28 +100,32 @@
   </nav>
 </div>
 
-<style>
-  .header {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    padding: 20px;
-  }
+<!-- ▼ TOPページ本体 -->
+<div class="container">
+  <div class="card">
 
-  /* 左端ロゴ：大きめ */
-  .logo-main {
-    height: 100px;
-  }
+    <h1>マイクラ コマンド集</h1>
 
-  /* メニュー画像：もっと大きく */
-  .logo-small {
-    height: 70px;
-    vertical-align: middle;
-  }
+    <img src="images/neon_rogo1_VCMYK.png" style="width:250px; margin:20px auto; display:block;">
 
-  .navbar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-</style>
+    <p>使いたいコマンドのページへ移動してください</p>
+
+    <a href="enemy/" class="button">敵対コマンド</a>
+    <a href="special/" class="button">特殊コマンド</a>
+    <a href="items/" class="button">アイテムコマンド</a>
+    <a href="friendly/" class="button">友好MOBコマンド</a>
+
+    <p style="margin-top:20px; opacity:0.8;">
+      その他のプラグインのコマンドは<br>
+      Stream to Earn のサイトにて確認できます
+    </p>
+
+    <a class="button" href="https://streamtoearn.io/" target="_blank">
+      Stream to Earn 公式サイト
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>
