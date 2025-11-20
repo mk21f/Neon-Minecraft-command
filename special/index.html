@@ -13,7 +13,7 @@
     font-family: 'Noto Sans JP', sans-serif;
   }
 
-  /* ▼ 上部メニュー（全ページ共通） */
+  /* ▼ 上部ナビ（共通） */
   .top-nav {
     display: flex;
     align-items: center;
@@ -29,7 +29,7 @@
     height: 150px;
   }
 
-  /* ▼ 本文エリア */
+  /* ▼ ページ本体 */
   .container {
     max-width: 600px;
     margin: 40px auto;
@@ -44,16 +44,19 @@
     text-align: left;
   }
 
-  /* ▼ タイトル横アイコン */
+  /* ▼ タイトル部分 */
   .title-wrap {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
   }
-
-  .title-logo {
-    height: 100px;
+  .title-logo-small {
+    height: 50px; /* ★ 1.png */
+  }
+  .title-logo-big {
+    height: 100px; /* ★ special textlogo */
   }
 
   select {
@@ -89,9 +92,9 @@
     background: #f3f3f3;
     padding: 10px;
     border-radius: 6px;
-    overflow-x: auto;
     white-space: pre-wrap;
     word-break: break-word;
+    overflow-x: auto;
     margin-top: 10px;
   }
 </style>
@@ -113,12 +116,11 @@
 <div class="container">
 <div class="card">
 
-<!-- タイトル（中央揃え & テキストロゴ画像 ） -->
-<div class="title-wrap" style="justify-content:center;">
-  <img src="../images/1.png" class="title-logo" style="height:50px;" alt="特殊アイコン">
-  <img src="../images/special textlogo.png" alt="特殊タイトル" style="height:60px;">
-</div>
-
+  <!-- ▼ タイトル -->
+  <div class="title-wrap">
+    <img src="../images/1.png" class="title-logo-small" alt="特殊アイコン">
+    <img src="../images/special textlogo.png" class="title-logo-big" alt="特殊タイトル">
+  </div>
 
   <label>コマンドを選択：</label>
   <select id="commandSelect">
@@ -184,5 +186,3 @@ function copyCommand(){
 
 </body>
 </html>
-
-
