@@ -46,10 +46,10 @@
 <body>
 
 <div class="navbar">
-  <a href="index.html">⚡特殊コマンド</a>
-  <a href="items.html">🎁アイテム</a>
-  <a href="hostile.html">👿敵対MOB</a>
-  <a href="friendly.html">🐑友好MOB</a>
+  <a href="special/">⚡特殊コマンド</a>
+  <a href="items/">🎁アイテム</a>
+  <a href="enemy/">👿敵対MOB</a>
+  <a href="friendly/">🐑友好MOB</a>
 </div>
 
 <div class="container">
@@ -107,8 +107,17 @@ case "tnt_set":
 }
 
 function copyCommand(){
-  const text = document.getElementById("output").textContent;
-  navigator.clipboard.writeText(text);
+    const output = document.getElementById("output").textContent;
+  if (!output) return;
+
+  const temp = document.createElement("textarea");
+  temp.value = output;
+  document.body.appendChild(temp);
+  temp.select();
+  document.execCommand("copy");
+  document.body.removeChild(temp);
+
+  alert("📋 コマンドをコピーしました！");
 }
 </script>
 
