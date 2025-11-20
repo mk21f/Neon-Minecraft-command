@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>敵対MOB</title>
+<title>敵対MOBコマンド</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
@@ -44,22 +44,22 @@
     text-align: left;
   }
 
-  /* ▼ タイトル部分 */
+
   .title-wrap {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 13px;
   }
-
   .title-logo-big {
-    height: 200px; /* enemy textlogo */
+    height: 100px; 
+    display: block;
   }
 
   select, input[type=range] {
     width: 100%;
     margin: 10px 0;
+    padding: 8px;
+    font-size: 15px;
   }
 
   button.button {
@@ -114,7 +114,6 @@
 
   <!-- ▼ タイトル画像 -->
   <div class="title-wrap">
-    <img src="../images/neon_rogo_solo.png" class="title-logo-small" alt="敵対アイコン">
     <img src="../images/enemy textlogo.png" class="title-logo-big" alt="敵対タイトル">
   </div>
 
@@ -134,6 +133,7 @@
   <label>距離設定：</label>
   <input type="range" id="distance" min="1" max="3" value="2"
     oninput="distanceLabel.textContent = this.value == 1 ? '近め' : this.value == 2 ? '普通' : '遠め'">
+
   <div><strong id="distanceLabel">普通</strong></div>
 
   <button class="button" onclick="generateHostile()">コマンドを生成</button>
@@ -199,5 +199,3 @@ function copyCommand(){
 
 </body>
 </html>
-
-
