@@ -40,21 +40,45 @@
     border-radius: 6px;
     cursor: pointer;
   }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px;
+  }
+  .mini-logo {
+    width: 40px;
+  }
+  .top-link {
+    text-decoration: none;
+    font-size: 16px;
+    color: #2196F3;
+    font-weight: bold;
+  }
+  .top-link:hover {
+    text-decoration: underline;
+  }
 </style>
 </head>
 
 <body>
 
+<div class="header">
+  <img src="../images/neon_rogo1_VCMYK.png" class="mini-logo" alt="Neonロゴ">
+  <a href="../" class="top-link">トップ</a>
+</div>
+
 <div class="navbar">
-  <a href="special/">⚡特殊コマンド</a>
-  <a href="items/">🎁アイテム</a>
-  <a href="enemy/">👿敵対MOB</a>
-  <a href="friendly/">🐑友好MOB</a>
+  <a href="../special/">⚡特殊コマンド</a>
+  <a href="../items/">🎁アイテム</a>
+  <a href="../enemy/">👿敵対MOB</a>
+  <a href="../friendly/">🐑友好MOB</a>
 </div>
 
 <div class="container">
-
 <div class="card">
+
   <h1>🎁アイテム付与</h1>
 
   <label>アイテムを選択：</label>
@@ -94,8 +118,8 @@
 
   <pre class="command-output" id="output"></pre>
   <button class="copy-btn" onclick="copyCommand()">コピー</button>
-</div>
 
+</div>
 </div>
 
 <script>
@@ -106,7 +130,6 @@ function toggleAmount() {
     amountItems.includes(item) ? "block" : "none";
 }
 
-// 個数入力の制限
 const amountInput = document.getElementById("amount");
 amountInput.addEventListener("input", () => {
   if (amountInput.value > 64) amountInput.value = 64;
@@ -115,7 +138,6 @@ amountInput.addEventListener("input", () => {
 
 function generateItem() {
   const item = document.getElementById("itemSelect").value;
-  // 1〜64に補正
   const num = Math.min(Math.max(parseInt(document.getElementById("amount").value||1),1),64);
 
   if (!item) {
@@ -147,7 +169,6 @@ function generateItem() {
   document.getElementById("output").textContent = cmd;
 }
 
-// コピーはコマンドのみ
 function copyCommand(){
   const text = document.getElementById("output").textContent;
   if (!text) return;
@@ -163,4 +184,3 @@ function copyCommand(){
 
 </body>
 </html>
-
