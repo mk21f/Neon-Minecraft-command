@@ -47,21 +47,45 @@
     word-break: break-word;
     margin-top: 10px;
   }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px;
+  }
+  .mini-logo {
+    width: 40px;
+  }
+  .top-link {
+    text-decoration: none;
+    font-size: 16px;
+    color: #2196F3;
+    font-weight: bold;
+  }
+  .top-link:hover {
+    text-decoration: underline;
+  }
 </style>
 </head>
 
 <body>
 
+<div class="header">
+  <img src="../images/neon_rogo1_VCMYK.png" class="mini-logo" alt="Neonロゴ">
+  <a href="../" class="top-link">トップ</a>
+</div>
+
 <div class="navbar">
-  <a href="special/">⚡特殊コマンド</a>
-  <a href="items/">🎁アイテム</a>
-  <a href="enemy/">👿敵対MOB</a>
-  <a href="friendly/">🐑友好MOB</a>
+  <a href="../special/">⚡特殊コマンド</a>
+  <a href="../items/">🎁アイテム</a>
+  <a href="../enemy/">👿敵対MOB</a>
+  <a href="../friendly/">🐑友好MOB</a>
 </div>
 
 <div class="container">
-
 <div class="card">
+
   <h1>👿敵対MOB</h1>
 
   <label>召喚するMOBを選択：</label>
@@ -86,40 +110,40 @@
 
   <pre class="command-output" id="output"></pre>
   <button class="copy-btn" onclick="copyCommand()">コピー</button>
-</div>
 
+</div>
 </div>
 
 <script>
 function generateHostile() {
   const mob = document.getElementById("mobSelect").value;
-  const distText = document.getElementById("distanceLabel").textContent;
+  const dist = document.getElementById("distance").value;
   let cmd = "";
 
   switch(mob){
     case "skeleton":
-      cmd = `execute as @p at @p run summon skeleton ^ ^2 ^2 {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      cmd = `execute as @p at @p run summon skeleton ^ ^2 ^${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
       break;
     case "slime_small":
-      cmd = `execute as @p at @p run summon slime ~ ~ ~1 {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1,Size:0}`;
+      cmd = `execute as @p at @p run summon slime ~ ~ ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1,Size:0}`;
       break;
     case "slime_large":
-      cmd = `execute as @p at @p run summon slime ~ ~ ~1 {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1,Size:3}`;
+      cmd = `execute as @p at @p run summon slime ~ ~ ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1,Size:3}`;
       break;
     case "spider":
-      cmd = `execute at @a run summon spider ~ ~2 ~1 {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      cmd = `execute at @p run summon spider ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
       break;
     case "wither":
-      cmd = `execute at @a run summon wither ~ ~2 ~1 {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      cmd = `execute at @p run summon wither ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
       break;
     case "warden":
-      cmd = `execute as @p at @p run summon minecraft:warden ~1 ~1 ~1 {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1b,PersistenceRequired:1b,Brain:{memories:{"minecraft:dig_cooldown":{value:{},ttl:9223372036854775807L}}},anger:{suspects:[{uuid:[I;0,0,0,0]}]}}`;
+      cmd = `execute as @p at @p run summon minecraft:warden ~1 ~1 ~${dist} {CustomName:'{"text":"{nickname}"}',CustomNameVisible:1b}`;
       break;
     case "zombie":
-      cmd = `execute at @a run summon zombie ~ ~2 ~1 {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      cmd = `execute at @p run summon zombie ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
       break;
     case "dragon":
-      cmd = `execute at @p run summon minecraft:ender_dragon ~ ~ ~ {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      cmd = `execute at @p run summon minecraft:ender_dragon ~ ~ ~{dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
       break;
     default:
       cmd = "MOBを選択してください。";
@@ -145,4 +169,3 @@ function copyCommand(){
 
 </body>
 </html>
-
