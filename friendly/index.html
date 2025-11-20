@@ -4,31 +4,68 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>友好MOB</title>
-<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
+  body {
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  /* ▼ 上部ナビ（共通） */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 20px 30px 20px;
+  }
+
+  .left-logo {
+    height: 50px;
+  }
+
+  .menu-icon {
+    height: 150px;
+  }
+
+  /* ▼ ページ本体 */
+  .container {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+  }
+
   .card {
     background: #fff;
-    padding: 20px;
+    padding: 30px 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    max-width: 600px;
-    margin: 20px auto;
+    text-align: left;
   }
+
+  /* ▼ タイトル部分 */
+  .title-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .title-logo-small {
+    height: 50px; /* ★友好アイコン（ハート） */
+  }
+  .title-logo-big {
+    height: 100px; /* ★友好タイトル画像 */
+  }
+
   select {
     width: 100%;
     margin: 10px 0;
     padding: 8px;
     font-size: 15px;
   }
-  .copy-btn {
-    background: #4CAF50;
-    color: #fff;
-    padding: 8px 14px;
-    border: none;
-    margin-top: 8px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
+
   button.button {
     width: 100%;
     padding: 10px;
@@ -40,6 +77,17 @@
     color: #fff;
     cursor: pointer;
   }
+
+  .copy-btn {
+    background: #4CAF50;
+    color: #fff;
+    padding: 8px 14px;
+    border: none;
+    margin-top: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
   pre.command-output {
     background: #f3f3f3;
     padding: 10px;
@@ -49,46 +97,30 @@
     word-break: break-word;
     margin-top: 10px;
   }
-
-  .header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 15px;
-  }
-  .mini-logo {
-    width: 40px;
-  }
-  .top-link {
-    text-decoration: none;
-    font-size: 16px;
-    color: #2196F3;
-    font-weight: bold;
-  }
-  .top-link:hover {
-    text-decoration: underline;
-  }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <img src="../images/neon_rogo1_VCMYK.png" class="mini-logo" alt="Neonロゴ">
-  <a href="../" class="top-link">トップ</a>
-</div>
+<!-- ▼ 上部ナビ（共通） -->
+<div class="top-nav">
+  <a href="../"><img src="../images/neon_rogo_solo.png" class="left-logo" alt="TOP"></a>
 
-<div class="navbar">
-  <a href="../special/">⚡特殊コマンド</a>
-  <a href="../items/">🎁アイテム</a>
-  <a href="../enemy/">👿敵対MOB</a>
-  <a href="../friendly/">🐑友好MOB</a>
+  <a href="../"><img src="../images/TOP textlogo.png" class="menu-icon"></a>
+  <a href="../special/"><img src="../images/special textlogo.png" class="menu-icon"></a>
+  <a href="../items/"><img src="../images/item textlogo.png" class="menu-icon"></a>
+  <a href="../enemy/"><img src="../images/enemy textlogo.png" class="menu-icon"></a>
+  <a href="../friendly/"><img src="../images/friendly textlogo.png" class="menu-icon"></a>
 </div>
 
 <div class="container">
 <div class="card">
 
-  <h1>🐑友好MOB</h1>
+  <!-- ▼ タイトル -->
+  <div class="title-wrap">
+    <img src="../images/heart.png" class="title-logo-small" alt="友好アイコン">
+    <img src="../images/friendly textlogo.png" class="title-logo-big" alt="友好タイトル">
+  </div>
 
   <label>召喚するMOBを選択：</label>
   <select id="mobSelect">
