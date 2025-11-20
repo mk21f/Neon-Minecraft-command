@@ -49,21 +49,45 @@
     word-break: break-word;
     margin-top: 10px;
   }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px;
+  }
+  .mini-logo {
+    width: 40px;
+  }
+  .top-link {
+    text-decoration: none;
+    font-size: 16px;
+    color: #2196F3;
+    font-weight: bold;
+  }
+  .top-link:hover {
+    text-decoration: underline;
+  }
 </style>
 </head>
 
 <body>
 
+<div class="header">
+  <img src="../images/neon_rogo1_VCMYK.png" class="mini-logo" alt="Neonロゴ">
+  <a href="../" class="top-link">トップ</a>
+</div>
+
 <div class="navbar">
-  <a href="special/">⚡特殊コマンド</a>
-  <a href="items/">🎁アイテム</a>
-  <a href="enemy/">👿敵対MOB</a>
-  <a href="friendly/">🐑友好MOB</a>
+  <a href="../special/">⚡特殊コマンド</a>
+  <a href="../items/">🎁アイテム</a>
+  <a href="../enemy/">👿敵対MOB</a>
+  <a href="../friendly/">🐑友好MOB</a>
 </div>
 
 <div class="container">
-
 <div class="card">
+
   <h1>🐑友好MOB</h1>
 
   <label>召喚するMOBを選択：</label>
@@ -82,8 +106,8 @@
 
   <pre class="command-output" id="output"></pre>
   <button class="copy-btn" onclick="copyCommand()">コピー</button>
-</div>
 
+</div>
 </div>
 
 <script>
@@ -115,4 +139,3 @@ function copyCommand() {
 
 </body>
 </html>
-
