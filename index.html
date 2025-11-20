@@ -6,6 +6,35 @@
 <title>マイクラコマンド集トップ</title>
 <link rel="stylesheet" href="style.css">
 <style>
+  body {
+    margin: 0;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 20px;
+  }
+  .site-logo {
+    height: 50px;
+  }
+  .navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+  }
+  .navbar a {
+    text-decoration: none;
+    color: #2196F3;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .navbar span {
+    color: #666;
+  }
+
   .container {
     max-width: 600px;
     margin: 40px auto;
@@ -33,18 +62,16 @@
     background-color: #1976D2;
   }
   img.logo {
-    width: 300px; /* 画像サイズ調整 */
+    width: 300px;
     margin: 10px auto;
     display: block;
   }
-
-    .info-text {
+  .info-text {
     font-size: 14px;
     opacity: 0.8;
     margin-top: 20px;
     margin-bottom: 10px;
   }
-
   .ste-btn {
     display: inline-block;
     background-color: #2196F3;
@@ -54,49 +81,48 @@
     text-decoration: none;
     font-size: 14px;
   }
-
   .ste-btn:hover {
     background-color: #1976D2;
   }
-
 </style>
 </head>
 <body>
 
-<div class="navbar">
-  <a href="special/">⚡特殊コマンド</a>
-  <a href="items/">🎁アイテム</a>
-  <a href="enemy/">👿敵対MOB</a>
-  <a href="friendly/">🐑友好MOB</a>
+<div class="header">
+  <img src="images/TOP textlogo.png" class="site-logo" alt="TOPロゴ">
+  <nav class="navbar">
+    <a href="./">TOP</a><span>｜</span>
+    <a href="special/">特殊コマンド</a><span>｜</span>
+    <a href="items/">アイテム</a><span>｜</span>
+    <a href="enemy/">敵対MOB</a><span>｜</span>
+    <a href="friendly/">友好MOB</a>
+  </nav>
 </div>
 
 <div class="container">
   <div class="card">
     <h1>マイクラ コマンド集</h1>
 
-    <!-- 画像のサイズ -->
     <img src="images/neon_rogo1_VCMYK.png" class="logo" alt="Neonロゴ">
 
     <p>使いたいコマンドのページへ移動してください</p>
 
-    <a href="enemy/" class="button">👿 敵対コマンド</a>
-    <a href="special/" class="button">⚡ 特殊コマンド</a>
-    <a href="items/" class="button">🎁 アイテムコマンド</a>
-    <a href="friendly/" class="button">🐑 友好MOBコマンド</a>
+    <a href="enemy/" class="button">敵対コマンド</a>
+    <a href="special/" class="button">特殊コマンド</a>
+    <a href="items/" class="button">アイテムコマンド</a>
+    <a href="friendly/" class="button">友好MOBコマンド</a>
 
     <p class="info-text">
-  その他のプラグインのコマンドは<br>
-  Stream to Earn のサイトにて確認できます
-</p>
+      その他のプラグインのコマンドは<br>
+      Stream to Earn のサイトにて確認できます
+    </p>
 
-<a class="ste-btn" href="https://streamtoearn.io/" target="_blank">
-  Stream to Earn 公式サイト
-</a>
+    <a class="ste-btn" href="https://streamtoearn.io/" target="_blank">
+      Stream to Earn 公式サイト
+    </a>
 
   </div>
 </div>
 
 </body>
 </html>
-
-
