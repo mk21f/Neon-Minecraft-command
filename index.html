@@ -3,16 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>コマンドリストTOP</title>
-<link rel="stylesheet" href="style.css">
+<title>マイクラコマンド集TOP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
   body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: center;
   }
 
-  /* 上部ナビ 全体横並び */
+  /* ▼ 上部ナビ（共通） */
   .top-nav {
     display: flex;
     align-items: center;
@@ -20,21 +22,24 @@
     padding: 10px 20px 30px 20px;
   }
 
-  /* 左上ロゴ（キッシー） */
-  .top-nav .left-logo {
-    height: 50px;
+  .left-logo {
+    height: 50px; /* 左端ロゴ */
   }
 
-  /* メニュー画像 */
-  .top-nav .menu-icon {
-    height: 150px;
+  .menu-icon {
+    height: 150px; /* メニュー画像 */
   }
 
-  /* メインカード */
+  /* ▼ ページ中央 */
   .container {
     max-width: 600px;
-    margin: 40px auto;
-    text-align: center;
+    margin: 0 auto;
+  }
+
+  .title-img {
+    height: 200px; /* ← command list.png */
+    display: block;
+    margin: 0 auto 20px auto;
   }
 
   .card {
@@ -53,52 +58,73 @@
     border-radius: 8px;
     margin: 10px 0;
     font-size: 16px;
+    transition: 0.2s;
+  }
+  a.button:hover {
+    background-color: #1976D2;
+  }
+
+  .info-text {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .ste-btn {
+    display: inline-block;
+    background-color: #2196F3;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .ste-btn:hover {
+    background-color: #1976D2;
   }
 </style>
 </head>
 
 <body>
 
-<!-- ナビ全体 1行 -->
+<!-- ▼ 上部メニュー -->
 <div class="top-nav">
-  <a href="./"><img src="images/neon_rogo_solo.png" class="left-logo" alt="ロゴ"></a>
+  <a href="./"><img src="images/neon_rogo_solo.png" class="left-logo" alt="TOP"></a>
 
-  <a href="./"><img src="images/TOP textlogo.png" class="menu-icon" alt="TOP"></a>
-  <a href="special/"><img src="images/special textlogo.png" class="menu-icon" alt="特殊"></a>
-  <a href="items/"><img src="images/item textlogo.png" class="menu-icon" alt="アイテム"></a>
-  <a href="enemy/"><img src="images/enemy textlogo.png" class="menu-icon" alt="敵対"></a>
-  <a href="friendly/"><img src="images/friendly textlogo.png" class="menu-icon" alt="友好"></a>
+  <a href="./"><img src="images/TOP textlogo.png" class="menu-icon"></a>
+  <a href="special/"><img src="images/special textlogo.png" class="menu-icon"></a>
+  <a href="items/"><img src="images/item textlogo.png" class="menu-icon"></a>
+  <a href="enemy/"><img src="images/enemy textlogo.png" class="menu-icon"></a>
+  <a href="friendly/"><img src="images/friendly textlogo.png" class="menu-icon"></a>
 </div>
 
-<!-- メイン -->
 <div class="container">
   <div class="card">
 
-    <!-- 中央Neon ロゴ -->
-    <img src="images/neon_rogo1_VCMYK.png" alt="Neonロゴ" style="height:130px; margin-bottom:20px;">
-
-    <!-- 中央Neon ロゴ の下 コマンド一覧 -->
-    <img src="images/command list.png" alt="コマンドリスト" style="height:90px; margin-bottom:20px;">
+    <!-- ▼ タイトル画像 -->
+    <img src="images/command list.png" class="title-img" alt="コマンド集タイトル">
 
     <p>使いたいコマンドのページへ移動してください</p>
 
-    <a href="enemy/" class="button">敵対コマンド</a>
+    <!-- ▼ ボタン -->
     <a href="special/" class="button">特殊コマンド</a>
-    <a href="items/" class="button">アイテムコマンド</a>
+    <a href="items/"  class="button">アイテムコマンド</a>
+    <a href="enemy/"  class="button">敵対コマンド</a>
     <a href="friendly/" class="button">友好MOBコマンド</a>
 
-    <p style="margin-top:20px; opacity:0.8;">
+    <p class="info-text">
       その他のプラグインのコマンドは<br>
       Stream to Earn のサイトにて確認できます
     </p>
 
-    <a href="https://streamtoearn.io/" target="_blank" class="button">
-      Stream to Earn公式サイト
+    <a class="ste-btn" href="https://streamtoearn.io/" target="_blank">
+      Stream to Earn 公式サイト
     </a>
+
   </div>
 </div>
 
 </body>
 </html>
-
-
