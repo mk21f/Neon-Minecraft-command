@@ -3,36 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>マイクラコマンド集トップ</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<title>マイクラコマンド集TOP</title>
 <link rel="stylesheet" href="style.css">
-
 <style>
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-  }
-
-  /* ▼ ヘッダー（画像メニュー） */
+  /* ===== 共通ヘッダー ===== */
   .header {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 10px 20px;
+    gap: 14px;
+    margin: 20px;
   }
-  .navbar {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .nav-logo-big { height: 50px; }
-  .nav-logo-small { height: 40px; }
-  .navbar span {
-    color: #666;
+  .logo-main { height: 50px; }
+  .logo-small { height: 40px; }
+
+  .navbar a {
+    margin-right: 8px;
+    text-decoration: none;
+    color: #2196F3;
     font-weight: bold;
   }
 
-  /* ▼ 元のTOPページデザイン */
   .container {
     max-width: 600px;
     margin: 40px auto;
@@ -54,65 +44,29 @@
     border-radius: 8px;
     margin: 10px 0;
     font-size: 16px;
-    transition: 0.2s;
-  }
-  a.button:hover {
-    background-color: #1976D2;
-  }
-  img.logo {
-    width: 300px;
-    margin: 10px auto;
-    display: block;
-  }
-  .info-text {
-    font-size: 14px;
-    opacity: 0.8;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  .ste-btn {
-    display: inline-block;
-    background-color: #2196F3;
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  .ste-btn:hover {
-    background-color: #1976D2;
   }
 </style>
 </head>
 
 <body>
 
-<!-- ▼ 画像ロゴのナビメニュー -->
+<!-- ▼ 共通ヘッダー -->
 <div class="header">
-  <a href="./">
-    <img src="images/TOP textlogo.png" class="nav-logo-big" alt="TOP">
-  </a>
-
+  <img src="images/TOP textlogo.png" class="logo-main" alt="TOP">
   <nav class="navbar">
-    <a href="special/"><img src="images/special textlogo.png" class="nav-logo-small" alt="特殊"></a>
-    <span>｜</span>
-
-    <a href="items/"><img src="images/item textlogo.png" class="nav-logo-small" alt="アイテム"></a>
-    <span>｜</span>
-
-    <a href="enemy/"><img src="images/enemy textlogo.png" class="nav-logo-small" alt="敵対"></a>
-    <span>｜</span>
-
-    <a href="friendly/"><img src="images/friendly textlogo.png" class="nav-logo-small" alt="友好"></a>
+    <a href="./">TOP</a>｜
+    <img src="images/special textlogo.png" class="logo-small"> <a href="special/">特殊</a>｜
+    <img src="images/item textlogo.png" class="logo-small"> <a href="items/">アイテム</a>｜
+    <img src="images/enemy textlogo.png" class="logo-small"> <a href="enemy/">敵対</a>｜
+    <img src="images/friendly textlogo.png" class="logo-small"> <a href="friendly/">友好</a>
   </nav>
 </div>
+<!-- ▲ 共通ヘッダー -->
 
-<!-- ▼ TOPページ本体 -->
 <div class="container">
   <div class="card">
     <h1>マイクラ コマンド集</h1>
-
-    <img src="images/neon_rogo1_VCMYK.png" class="logo" alt="Neonロゴ">
+    <img src="images/neon_rogo1_VCMYK.png" class="logo-main" style="display:block;margin:0 auto">
 
     <p>使いたいコマンドのページへ移動してください</p>
 
@@ -121,15 +75,8 @@
     <a href="items/" class="button">アイテムコマンド</a>
     <a href="friendly/" class="button">友好MOBコマンド</a>
 
-    <p class="info-text">
-      その他のプラグインのコマンドは<br>
-      Stream to Earn のサイトにて確認できます
-    </p>
-
-    <a class="ste-btn" href="https://streamtoearn.io/" target="_blank">
-      Stream to Earn 公式サイト
-    </a>
-
+    <p>その他のプラグインコマンドは<br>Stream to Earn 公式サイトへ</p>
+    <a href="https://streamtoearn.io/" class="button" target="_blank">Stream to Earn</a>
   </div>
 </div>
 
