@@ -13,7 +13,6 @@
     font-family: 'Noto Sans JP', sans-serif;
   }
 
-  /* ▼ 上部ナビ（共通） */
   .top-nav {
     display: flex;
     align-items: center;
@@ -29,7 +28,6 @@
     height: 150px;
   }
 
-  /* ▼ ページ本体 */
   .container {
     max-width: 600px;
     margin: 40px auto;
@@ -44,7 +42,6 @@
     text-align: left;
   }
 
-  /* ▼ タイトル部分 */
   .title-wrap {
     display: flex;
     justify-content: center;
@@ -52,7 +49,7 @@
   }
 
   .title-logo-big {
-    height: 180px;  /* タイトル画像  */
+    height: 180px;
     display: block;
   }
 
@@ -99,7 +96,6 @@
 
 <body>
 
-<!-- ▼ 上部ナビ（共通） -->
 <div class="top-nav">
   <a href="../"><img src="../images/neon_rogo_solo.png" class="left-logo" alt="TOP"></a>
 
@@ -113,7 +109,6 @@
 <div class="container">
 <div class="card">
 
-
   <div class="title-wrap">
     <img src="../images/special textlogo.png" class="title-logo-big" alt="特殊タイトル">
   </div>
@@ -121,11 +116,36 @@
   <label>コマンドを選択：</label>
   <select id="commandSelect">
     <option value="">選択してください</option>
+
+
     <option value="fill_air">落とし穴</option>
     <option value="set_lava">プレイヤー頭上にマグマ設置</option>
     <option value="summon_lightning">雷を召喚</option>
-    <option value="kill_mobs">敵対Mobをキル</option>
     <option value="tnt_set">TNT設置＆召喚（プレイヤー指定）</option>
+
+    <option value="kill_all">全MOB消去（プレイヤー以外）</option>
+    <option value="kill_ender_dragon">エンダードラゴンを倒す</option>
+    <option value="kill_warden">ウォーデンを倒す</option>
+    <option value="kill_wither">ウィザーを倒す</option>
+    <option value="kill_elder">エルダーガーディアンを倒す</option>
+    <option value="kill_brute">ピグリンブルートを倒す</option>
+    <option value="kill_vindicator">ヴィンディケーターを倒す</option>
+    <option value="kill_evoker">エヴォーカーを倒す</option>
+    <option value="kill_phantom">ファントムを倒す</option>
+    <option value="kill_shulker">シュルカーを倒す</option>
+    <option value="kill_blaze">ブレイズを倒す</option>
+    <option value="kill_breeze">ブリーズ(1.21)を倒す</option>
+
+    <option value="weather_clear">天気：晴れ固定</option>
+    <option value="weather_rain">天気：雨固定（※雪バイオームで雪）</option>
+
+    <option value="time_day">時間：朝</option>
+    <option value="time_sunset">時間：夕方</option>
+    <option value="time_night">時間：夜</option>
+    <option value="time_midnight">時間：深夜</option>
+    <option value="time_stop">昼夜サイクル停止</option>
+    <option value="time_start">昼夜サイクル再開</option>
+
   </select>
 
   <button class="button" onclick="generateCommand()">コマンド生成</button>
@@ -142,22 +162,86 @@ function generateCommand() {
   let cmd = "";
 
   switch(cmdType){
+
     case "fill_air":
       cmd = `/execute as @p at @p run fill ~-1 ~-2 ~-1 ~1 ~-1 ~1 minecraft:air replace`;
       break;
+
     case "set_lava":
       cmd = `/execute at @p run setblock ~ ~2 ~ lava`;
       break;
+
     case "summon_lightning":
       cmd = `/execute at @p run summon lightning_bolt ~ ~ ~`;
       break;
-    case "kill_mobs":
-      cmd = `/kill @e[type=!player,type=!wither,type=!warden,type=!ender_dragon,type=!item]`;
-      break;
+
     case "tnt_set":
-      cmd = `execute as {playername} at @s run fill ~-2 ~-3 ~-2 ~2 ~-1 ~2 minecraft:tnt[unstable=true] replace\n`;
-      cmd += `execute as {playername} at @s run summon tnt ~ ~ ~ {fuse:20}`;
+      cmd = `execute as {playername} at @s run fill ~-2 ~-3 ~-2 ~2 ~-1 ~2 minecraft:tnt[unstable=true] replace\nexecute as {playername} at @s run summon tnt ~ ~ ~ {fuse:20}`;
       break;
+
+    case "kill_all":
+      cmd = `/kill @e[type=!player]`;
+      break;
+    case "kill_ender_dragon":
+      cmd = `/kill @e[type=ender_dragon]`;
+      break;
+    case "kill_warden":
+      cmd = `/kill @e[type=warden]`;
+      break;
+    case "kill_wither":
+      cmd = `/kill @e[type=wither]`;
+      break;
+    case "kill_elder":
+      cmd = `/kill @e[type=elder_guardian]`;
+      break;
+    case "kill_brute":
+      cmd = `/kill @e[type=piglin_brute]`;
+      break;
+    case "kill_vindicator":
+      cmd = `/kill @e[type=vindicator]`;
+      break;
+    case "kill_evoker":
+      cmd = `/kill @e[type=evoker]`;
+      break;
+    case "kill_phantom":
+      cmd = `/kill @e[type=phantom]`;
+      break;
+    case "kill_shulker":
+      cmd = `/kill @e[type=shulker]`;
+      break;
+    case "kill_blaze":
+      cmd = `/kill @e[type=blaze]`;
+      break;
+    case "kill_breeze":
+      cmd = `/kill @e[type=breeze]`;
+      break;
+
+    case "weather_clear":
+      cmd = `/weather clear\n/gamerule doWeatherCycle false`;
+      break;
+    case "weather_rain":
+      cmd = `/weather rain\n/gamerule doWeatherCycle false`;
+      break;
+
+    case "time_day":
+      cmd = `/time set day`;
+      break;
+    case "time_sunset":
+      cmd = `/time set sunset`;
+      break;
+    case "time_night":
+      cmd = `/time set night`;
+      break;
+    case "time_midnight":
+      cmd = `/time set midnight`;
+      break;
+    case "time_stop":
+      cmd = `/gamerule doDaylightCycle false`;
+      break;
+    case "time_start":
+      cmd = `/gamerule doDaylightCycle true`;
+      break;
+
     default:
       cmd = "コマンドを選択してください。";
   }
@@ -166,11 +250,11 @@ function generateCommand() {
 }
 
 function copyCommand(){
-  const output = document.getElementById("output").textContent;
-  if (!output) return;
+  const text = document.getElementById("output").textContent;
+  if (!text) return;
 
   const temp = document.createElement("textarea");
-  temp.value = output;
+  temp.value = text;
   document.body.appendChild(temp);
   temp.select();
   document.execCommand("copy");
@@ -182,7 +266,3 @@ function copyCommand(){
 
 </body>
 </html>
-
-
-
-
