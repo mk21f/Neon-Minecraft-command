@@ -117,13 +117,13 @@
  <select id="commandSelect">
   <option value="">選択してください</option>
 
-  <!--  落とし穴 / 設置 -->
+  <!--  落とし穴 / 頭上設置 -->
   <option disabled>―― 落とし穴 / 設置 ――</option>
   <option value="fill_air">落とし穴</option>
   <option value="set_lava">プレイヤー頭上にマグマ設置</option>
 
-  <!--  召喚 / 設置 -->
-  <option disabled>―― 召喚 / 設置 ――</option>
+  <!--  召喚 / TNT設置 -->
+  <option disabled>―― 召喚 / TNT設置 ――</option>
   <option value="summon_lightning">雷を召喚</option>
   <option value="tnt_set">TNT設置＆召喚（プレイヤー指定）</option>
 
@@ -145,10 +145,10 @@
   <!--  天気コマンド -->
   <option disabled>―― 天気 ――</option>
   <option value="weather_clear">天気：晴れ</option>
-  <option value="weather_rain">天気：雨</option>
+  <option value="weather_rain">天気：雨 ※雪バイオームでは雪に変化</option>
   <option value="weather_thunder">天気：雷雨</option>
   <option value="weather_lock_clear">天気：晴れ固定</option>
-  <option value="weather_lock_rain">天気：雨固定</option>
+  <option value="weather_lock_rain">天気：雨固定 ※雪バイオームでは雪に変化</option>
   <option value="weather_lock_thunder">天気：雷雨固定</option>
   <option value="weather_cycle_start">天気サイクル再開</option>
 
@@ -302,3 +302,4 @@ function copyCommand(){
 
 </body>
 </html>
+
