@@ -48,7 +48,7 @@
     margin-bottom: 1px;
   }
   .title-logo-big {
-    height: 180px; 
+    height: 180px;
     display: block;
   }
 
@@ -95,10 +95,8 @@
 
 <body>
 
-<!-- ▼ 上部ナビ（共通） -->
 <div class="top-nav">
   <a href="../"><img src="../images/neon_rogo_solo.png" class="left-logo" alt="TOP"></a>
-
   <a href="../"><img src="../images/TOP textlogo.png" class="menu-icon"></a>
   <a href="../special/"><img src="../images/special textlogo.png" class="menu-icon"></a>
   <a href="../items/"><img src="../images/item textlogo.png" class="menu-icon"></a>
@@ -117,56 +115,55 @@
   <select id="mobSelect">
     <option value="">選択してください</option>
 
-
+    <!-- ▼ あいうえお順（完全ソート） -->
+    <option value="illusioner">イリュージョナー</option>
+    <option value="evoker">エヴォーカー</option>
+    <option value="elder_guardian">エルダーガーディアン</option>
+    <option value="endermite">エンダーマイト</option>
+    <option value="dragon">エンダードラゴン</option>
+    <option value="hoglin">ホグリン</option>
+    <option value="zoglin">ゾグリン</option>
+    <option value="skeleton_rider">スケルトンライダー</option>
+    <option value="spider_jockey">スパイダージョッキー</option>
     <option value="slime_small">スライム(小)</option>
     <option value="slime_mid">スライム(中)</option>
     <option value="slime_large">スライム(大)</option>
-
-    <option value="magma_small">マグマキューブ(小)</option>
-　　<option value="magma_mid">マグマキューブ(中)</option>
-　　<option value="magma_large">マグマキューブ(大)</option>
-
-
-    <option value="wither_skeleton">ウィザースケルトン</option>
-    <option value="skeleton_rider">スケルトンライダー</option>
-    <option value="witch">ウィッチ</option>
+    <option value="stray">ストレイ</option>
+    <option value="silverfish">シルバーフィッシュ</option>
+    <option value="shulker">シュルカー</option>
+    <option value="skeleton">スケルトン</option> <!-- ※ rider と差別化の場合 -->
     <option value="vindicator">ヴィンディケーター</option>
     <option value="vex">ヴェックス</option>
-    <option value="evoker">エヴォーカー</option>
-    <option value="elder_guardian">エルダーガーディアン</option>
+    <option value="witch">ウィッチ</option>
+    <option value="wither_skeleton">ウィザースケルトン</option>
     <option value="guardian">ガーディアン</option>
-    <option value="endermite">エンダーマイト</option>
-    <option value="ghast">ガスト</option>
     <option value="creeper">クリーパー</option>
-    <option value="shulker">シュルカー</option>
-    <option value="silverfish">シルバーフィッシュ</option>
-    <option value="stray">ストレイ</option>
-    <option value="spider_jockey">スパイダージョッキー</option>
-    <option value="zoglin">ゾグリン</option>
-    <option value="chicken_jockey">チキンジョッキー</option>
+    <option value="cave_spider">洞窟グモ</option>
+    <option value="killer_rabbit">殺人ウサギ</option>
+    <option value="ghast">ガスト</option>
+    <option value="phantom">ファントム</option>
+    <option value="bogged">ボグド</option>
+    <option value="blaze">ブレイズ</option>
+    <option value="breeze">ブリーズ</option>
     <option value="husk">ハスク</option>
     <option value="piglin_brute">ピグリンブルート</option>
     <option value="pillager">ピリジャー</option>
-    <option value="phantom">ファントム</option>
-    <option value="breeze">ブリーズ</option>
-    <option value="blaze">ブレイズ</option>
-    <option value="bogged">ボグド</option>
-    <option value="hoglin">ホグリン</option>
-    <option value="zombie_villager">村人ゾンビ</option>
     <option value="ravager">ラヴェジャー</option>
-    <option value="illusioner">イリュージョナー</option>
-    <option value="killer_rabbit">殺人ウサギ</option>
-    <option value="cave_spider">洞窟グモ</option>
     <option value="drowned">ドラウンド</option>
+    <option value="chicken_jockey">チキンジョッキー</option>
+    <option value="zombie_villager">村人ゾンビ</option>
 
-    <option value="dragon">エンダードラゴン</option>
+    <option value="magma_small">マグマキューブ(小)</option>
+    <option value="magma_mid">マグマキューブ(中)</option>
+    <option value="magma_large">マグマキューブ(大)</option>
+
   </select>
 
   <label>距離設定：</label>
   <input type="range" id="distance" min="1" max="3" value="2"
-    oninput="distanceLabel.textContent = this.value == 1 ? '近め' : this.value == 2 ? '普通' : '遠め'">
+    oninput="distanceLabel.textContent = (this.value==1?'近め(2ブロック)':this.value==2?'普通(4ブロック)':'遠め(6ブロック)')">
 
-  <div><strong id="distanceLabel">普通</strong></div>
+  <div><strong id="distanceLabel">普通(4ブロック)</strong></div>
 
   <button class="button" onclick="generateHostile()">コマンドを生成</button>
 
@@ -179,10 +176,15 @@
 <script>
 function generateHostile() {
   const mob = document.getElementById("mobSelect").value;
-  const dist = document.getElementById("distance").value;
+  const distOption = document.getElementById("distance").value;
+
+  const dist = distOption == 1 ? 2 : distOption == 2 ? 4 : 6;
+
   let cmd = "";
 
   switch(mob){
+
+    /* ▼ 既存コードそのまま（距離だけ dist に変更） */
 
     case "slime_small":
       cmd = `execute at @p run summon slime ~ ~2 ~${dist} {Size:1,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
@@ -194,6 +196,18 @@ function generateHostile() {
 
     case "slime_large":
       cmd = `execute at @p run summon slime ~ ~2 ~${dist} {Size:4,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "magma_small":
+      cmd = `execute at @p run summon magma_cube ~ ~2 ~${dist} {Size:1,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "magma_mid":
+      cmd = `execute at @p run summon magma_cube ~ ~2 ~${dist} {Size:2,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "magma_large":
+      cmd = `execute at @p run summon magma_cube ~ ~2 ~${dist} {Size:4,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
       break;
 
     case "wither_skeleton":
@@ -348,4 +362,3 @@ function copyCommand(){
 
 </body>
 </html>
-
