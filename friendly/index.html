@@ -114,44 +114,50 @@
 
   <label>召喚するMOBを選択：</label>
   <select id="mobSelect">
-    <option value="">選択してください</option>
+<label>召喚するMOBを選択：</label>
+<select id="mobSelect">
+  <option value="">選択してください</option>
 
-    <option value="iron_golem">アイアンゴーレム</option>
-    <option value="sheep">羊</option>
-    <option value="wolf">オオカミ</option>
-    <option value="villager">村人</option>
-    <option value="salmon">サケ</option>
-    <option value="chicken">ニワトリ</option>
-    <option value="parrot">オウム</option>
+  <!--  オーバーワールド（地上） -->
+  <option disabled>―― オーバーワールド（地上） ――</option>
+  <option value="allay">アレイ</option>
+  <option value="armadillo">アルマジロ</option>
+  <option value="cat">猫</option>
+  <option value="chicken">ニワトリ</option>
+  <option value="cow">牛</option>
+  <option value="goat">ヤギ</option>
+  <option value="sheep">羊</option>
+  <option value="sniffer">スニッファー</option>
+  <option value="fox">キツネ</option>
+  <option value="horse">馬</option>
+  <option value="donkey">ロバ</option>
+  <option value="rabbit">ウサギ</option>
+  <option value="parrot">オウム</option>
+  <option value="bee">蜂</option>
+  <option value="pig">豚</option>
+  <option value="panda">パンダ</option>
+  <option value="villager">村人</option>
+  <option value="wandering_trader">行商人</option>
+  <option value="trader_llama">行商人のラマ</option>
+  <option value="llama">ラマ</option>
+  <option value="wolf">オオカミ</option>
+  <option value="iron_golem">アイアンゴーレム</option>
+  <option value="snow_golem">スノーゴーレム</option>
+  <option value="mooshroom">ムーシュルーム</option>
 
-    <option value="cow">牛</option>
-    <option value="pig">豚</option>
-    <option value="rabbit">ウサギ</option>
-    <option value="goat">ヤギ</option>
-    <option value="armadillo">アルマジロ</option>
-    <option value="turtle">カメ</option>
-    <option value="horse">馬</option>
-    <option value="donkey">ロバ</option>
-    <option value="llama">ラマ</option>
-    <option value="mooshroom">ムーシュルーム</option>
-    <option value="fox">キツネ</option>
-    <option value="cat">猫</option>
-    <option value="panda">パンダ</option>
-    <option value="bee">蜂</option>
+  <!--  水中（海 / 川） -->
+  <option disabled>―― 水中 ――</option>
+  <option value="axolotl">ウーパールーパー</option>
+  <option value="salmon">サケ</option>
+  <option value="cod">タラ</option>
+  <option value="dolphin">イルカ</option>
+  <option value="pufferfish">フグ</option>
+  <option value="tropical_fish">熱帯魚</option>
+  <option value="turtle">カメ</option>
+  <option value="frog">カエル</option>
+  <option value="tadpole">オタマジャクシ</option>
 
-    <option value="cod">タラ</option>
-    <option value="pufferfish">フグ</option>
-    <option value="tropical_fish">熱帯魚</option>
-    <option value="dolphin">イルカ</option>
-    <option value="axolotl">ウーパーールーパー</option>
 
-    <option value="allay">アレイ</option>
-    <option value="sniffer">スニッファー</option>
-    <option value="frog">カエル</option>
-    <option value="tadpole">オタマジャクシ</option>
-    <option value="wandering_trader">行商人</option>
-    <option value="trader_llama">行商人のラマ</option>
-    <option value="snow_golem">スノーゴーレム</option>
   </select>
 
   <button class="button" onclick="generateFriendly()">コマンドを生成</button>
@@ -191,3 +197,4 @@ function copyCommand() {
 
 </body>
 </html>
+
