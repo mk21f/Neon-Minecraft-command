@@ -45,7 +45,6 @@
   .title-wrap {
     display: flex;
     justify-content: center;
-    margin-bottom: 1px;
   }
   .title-logo-big {
     height: 180px;
@@ -140,7 +139,6 @@
 <option value="dried_kelp">乾燥した昆布</option>
 <option value="bread">パン</option>
 
-
 <!-- 素材 / 鉱石 -->
 <option disabled>―― 素材 / 鉱石 ――</option>
 <option value="amethyst_shard">アメジスト</option>
@@ -153,7 +151,6 @@
 <option value="lapis_lazuli">ラピスラズリ</option>
 <option value="redstone">レッドストーン</option>
 
-
 <!-- 木材 / ブロック -->
 <option disabled>―― 木材 / ブロック ――</option>
 <option value="oak_log">オークの原木</option>
@@ -162,7 +159,6 @@
 <option value="ladder">はしご</option>
 <option value="white_wool">白の羊毛</option>
 <option value="white_carpet">白色のカーペット</option>
-
 
 <!-- 武器 -->
 <option disabled>―― 武器 ――</option>
@@ -194,7 +190,7 @@
 <option value="diamond_leggings">ダイヤ防具：レギンス</option>
 <option value="diamond_boots">ダイヤ防具：ブーツ</option>
 
-<!-- 投擲 / 弾系 -->  
+<!-- 投擲 / 弾系 -->
 <option disabled>―― 投擲 / 弾系 ――</option>
 <option value="ender_pearl">エンダーパール</option>
 <option value="arrow">矢</option>
@@ -207,7 +203,6 @@
 <option value="milk_bucket">牛乳入りバケツ</option>
 <option value="water_bucket">水入りバケツ</option>
 <option value="lava_bucket">溶岩バケツ</option>
-
 
 <!-- 移動 -->
 <option disabled>―― 移動 ――</option>
@@ -225,8 +220,6 @@
 <option value="shulker_box">シュルカーボックス</option>
 <option value="name_tag">名札</option>
 <option value="book">本</option>
-
-
 
 <!-- 花火 -->
 <option disabled>―― 花火 ――</option>
@@ -250,38 +243,46 @@
 </div>
 
 <script>
+// ▼ 数量が必要なアイテム
+const amountItems = [
+  "enchanted_golden_apple","golden_apple","cookie","cooked_beef","beetroot",
+  "beetroot_seeds","wheat","wheat_seeds","hay_block","baked_potato",
+  "cooked_porkchop","potato","carrot","cactus","cocoa_beans","melon",
+  "melon_seeds","pumpkin","pumpkin_seeds","dried_kelp","bread",
+
+  "amethyst_shard","gold_ingot","copper_ingot","diamond","iron_ingot",
+  "netherite_ingot","netherite_scrap","lapis_lazuli","redstone",
+
+  "oak_log","scaffolding","glass","ladder","white_wool","white_carpet",
+
+  "arrow","snowball",
+  
+  "bucket","milk_bucket","water_bucket","lava_bucket",
+
+  "torch","coal","sugar_cane","hay_block","book"
+];
+
 function toggleAmount() {
   const item = document.getElementById("itemSelect").value;
-  const amountItems = [
-    "golden_apple","oak_log","bone","iron_ingot","wheat_seeds",
-    "torch","coal","bucket","water_bucket","lava_bucket",
-    "milk_bucket","flint_and_steel","ender_pearl",
-    "cooked_beef","cooked_porkchop","bread","dried_kelp",
-    "enchanted_golden_apple","glass","scaffolding","ladder",
-    "white_wool","white_carpet","sugar_cane","gold_ingot",
-    "diamond","copper_ingot","redstone","amethyst_shard",
-    "lapis_lazuli","netherite_scrap","arrow","hay_block"
-    "snowball","book"
-  ];
 
   if (item === "ender_pearl") {
-    document.getElementById("amountBox").style.display = "block";
-    document.getElementById("amount").max = 16;
+    amountBox.style.display = "block";
+    amount.max = 16;
   } else if (amountItems.includes(item)) {
-    document.getElementById("amountBox").style.display = "block";
-    document.getElementById("amount").max = 64;
+    amountBox.style.display = "block";
+    amount.max = 64;
   } else {
-    document.getElementById("amountBox").style.display = "none";
+    amountBox.style.display = "none";
   }
 }
 
 function generateItem() {
-  const item = document.getElementById("itemSelect").value;
+  const item = itemSelect.value;
   let maxVal = (item === "ender_pearl") ? 16 : 64;
-  const num = Math.min(Math.max(parseInt(document.getElementById("amount").value||1),1),maxVal);
+  const num = Math.min(Math.max(parseInt(amount.value||1),1),maxVal);
 
   if (!item) {
-    document.getElementById("output").textContent = "";
+    output.textContent = "";
     return;
   }
 
@@ -289,100 +290,115 @@ function generateItem() {
 
   switch(item){
 
+    /* 食べ物 / 消耗品 */
+    case "enchanted_golden_apple": cmd = `/give @p enchanted_golden_apple ${num}`; break;
     case "golden_apple": cmd = `/give @p golden_apple ${num}`; break;
+    case "cookie": cmd = `/give @p cookie ${num}`; break;
+    case "cooked_beef": cmd = `/give @p cooked_beef ${num}`; break;
+    case "beetroot": cmd = `/give @p beetroot ${num}`; break;
+    case "beetroot_seeds": cmd = `/give @p beetroot_seeds ${num}`; break;
+    case "wheat": cmd = `/give @p wheat ${num}`; break;
+    case "wheat_seeds": cmd = `/give @p wheat_seeds ${num}`; break;
+
+    case "hay_block": cmd = `/give @p hay_block ${num}`; break;
+    case "baked_potato": cmd = `/give @p baked_potato ${num}`; break;
+    case "cooked_porkchop": cmd = `/give @p cooked_porkchop ${num}`; break;
+
+    case "potato": cmd = `/give @p potato ${num}`; break;
+    case "carrot": cmd = `/give @p carrot ${num}`; break;
+    case "cactus": cmd = `/give @p cactus ${num}`; break;
+
+    case "cocoa_beans": cmd = `/give @p cocoa_beans ${num}`; break;
+    case "melon": cmd = `/give @p melon ${num}`; break;
+    case "melon_seeds": cmd = `/give @p melon_seeds ${num}`; break;
+    case "pumpkin": cmd = `/give @p pumpkin ${num}`; break;
+    case "pumpkin_seeds": cmd = `/give @p pumpkin_seeds ${num}`; break;
+    case "dried_kelp": cmd = `/give @p dried_kelp ${num}`; break;
+    case "bread": cmd = `/give @p bread ${num}`; break;
+
+    /* 素材 / 鉱石 */
+    case "amethyst_shard": cmd = `/give @p amethyst_shard ${num}`; break;
+    case "gold_ingot": cmd = `/give @p gold_ingot ${num}`; break;
+    case "copper_ingot": cmd = `/give @p copper_ingot ${num}`; break;
+    case "diamond": cmd = `/give @p diamond ${num}`; break;
+    case "iron_ingot": cmd = `/give @p iron_ingot ${num}`; break;
+    case "netherite_ingot": cmd = `/give @p netherite_ingot ${num}`; break;
+    case "netherite_scrap": cmd = `/give @p netherite_scrap ${num}`; break;
+    case "lapis_lazuli": cmd = `/give @p lapis_lazuli ${num}`; break;
+    case "redstone": cmd = `/give @p redstone ${num}`; break;
+
+    /* 木材 / ブロック */
     case "oak_log": cmd = `/give @p oak_log ${num}`; break;
+    case "scaffolding": cmd = `/give @p scaffolding ${num}`; break;
+    case "glass": cmd = `/give @p glass ${num}`; break;
+    case "ladder": cmd = `/give @p ladder ${num}`; break;
+    case "white_wool": cmd = `/give @p white_wool ${num}`; break;
+    case "white_carpet": cmd = `/give @p white_carpet ${num}`; break;
 
-    case "iron_shovel": cmd = `/give @p iron_shovel`; break;
-    case "iron_sword": cmd = `/give @p iron_sword`; break;
-    case "iron_axe": cmd = `/give @p iron_axe`; break;
-    case "iron_pickaxe": cmd = `/give @p iron_pickaxe`; break;
-
+    /* 武器（単体） */
     case "diamond_sword": cmd = `/give @p diamond_sword`; break;
-    case "diamond_shovel": cmd = `/give @p diamond_shovel`; break;
+    case "trident": cmd = `/give @p trident`; break;
+    case "iron_sword": cmd = `/give @p iron_sword`; break;
+    case "mace": cmd = `/give @p mace`; break;
+    case "bow": cmd = `/give @p bow`; break;
+    case "crossbow": cmd = `/give @p crossbow`; break;
+
+    /* ツール（単体） */
+    case "brush": cmd = `/give @p brush`; break;
+    case "spyglass": cmd = `/give @p spyglass`; break;
+    case "flint_and_steel": cmd = `/give @p flint_and_steel`; break;
     case "diamond_axe": cmd = `/give @p diamond_axe`; break;
     case "diamond_pickaxe": cmd = `/give @p diamond_pickaxe`; break;
+    case "diamond_shovel": cmd = `/give @p diamond_shovel`; break;
+    case "iron_axe": cmd = `/give @p iron_axe`; break;
+    case "iron_pickaxe": cmd = `/give @p iron_pickaxe`; break;
+    case "iron_shovel": cmd = `/give @p iron_shovel`; break;
 
-    case "bone": cmd = `/give @p bone ${num}`; break;
-    case "iron_ingot": cmd = `/give @p iron_ingot ${num}`; break;
-
+    /* 防具（単体） */
+    case "elytra": cmd = `/give @p elytra`; break;
+    case "shield": cmd = `/give @p shield`; break;
     case "diamond_helmet": cmd = `/item replace entity @p armor.head with diamond_helmet`; break;
     case "diamond_chestplate": cmd = `/item replace entity @p armor.chest with diamond_chestplate`; break;
     case "diamond_leggings": cmd = `/item replace entity @p armor.legs with diamond_leggings`; break;
     case "diamond_boots": cmd = `/item replace entity @p armor.feet with diamond_boots`; break;
 
-    case "wheat_seeds": cmd = `/give @p wheat_seeds ${num}`; break;
+    /* 弾系 */
+    case "arrow": cmd = `/give @p arrow ${num}`; break;
     case "snowball": cmd = `/give @p snowball ${num}`; break;
-    case "book": cmd = `/give @p book ${num}`; break;
 
-    case "torch": cmd = `/give @p torch ${num}`; break;
-    case "coal": cmd = `/give @p coal ${num}`; break;
+    /* バケツ系 */
+    case "axolotl_bucket": cmd = `/give @p axolotl_bucket`; break;
     case "bucket": cmd = `/give @p bucket ${num}`; break;
+    case "milk_bucket": cmd = `/give @p milk_bucket ${num}`; break;
     case "water_bucket": cmd = `/give @p water_bucket ${num}`; break;
     case "lava_bucket": cmd = `/give @p lava_bucket ${num}`; break;
-    case "milk_bucket": cmd = `/give @p milk_bucket ${num}`; break;
 
-    case "flint_and_steel": cmd = `/give @p flint_and_steel ${num}`; break;
-    case "ender_pearl": cmd = `/give @p ender_pearl ${num}`; break;
-
-    case "shield": cmd = `/give @p shield`; break;
-    case "trident": cmd = `/give @p trident`; break;
-    case "totem_of_undying": cmd = `/give @p totem_of_undying`; break;
-    case "elytra": cmd = `/give @p elytra`; break;
-
-    case "cooked_beef": cmd = `/give @p cooked_beef ${num}`; break;
-    case "cooked_porkchop": cmd = `/give @p cooked_porkchop ${num}`; break;
-    case "bread": cmd = `/give @p bread ${num}`; break;
-    case "dried_kelp": cmd = `/give @p dried_kelp ${num}`; break;
-    case "enchanted_golden_apple": cmd = `/give @p enchanted_golden_apple ${num}`; break;
-
-    case "compass": cmd = `/give @p compass`; break;
-    case "map": cmd = `/give @p map`; break;
-    case "clock": cmd = `/give @p clock`; break;
-    case "sugar_cane": cmd = `/give @p sugar_cane ${num}`; break;
-
-    case "ender_chest": cmd = `/give @p ender_chest`; break;
-    case "glass": cmd = `/give @p glass ${num}`; break;
-    case "scaffolding": cmd = `/give @p scaffolding ${num}`; break;
-    case "ladder": cmd = `/give @p ladder ${num}`; break;
-
-    case "brush": cmd = `/give @p brush`; break;
-    case "spyglass": cmd = `/give @p spyglass`; break;
-
-    case "shulker_box": cmd = `/give @p shulker_box`; break;
-    case "white_wool": cmd = `/give @p white_wool ${num}`; break;
-    case "white_carpet": cmd = `/give @p white_carpet ${num}`; break;
-
+    /* 移動 */
     case "oak_boat": cmd = `/give @p oak_boat`; break;
     case "lead": cmd = `/give @p lead`; break;
     case "saddle": cmd = `/give @p saddle`; break;
-    case "name_tag": cmd = `/give @p name_tag`; break;
+    case "compass": cmd = `/give @p compass`; break;
+    case "map": cmd = `/give @p map`; break;
+    case "clock": cmd = `/give @p clock`; break;
 
+    /* 特殊 / その他 */
+    case "ender_chest": cmd = `/give @p ender_chest`; break;
+    case "command_block": cmd = `/give @p command_block`; break;
+    case "shulker_box": cmd = `/give @p shulker_box`; break;
+    case "name_tag": cmd = `/give @p name_tag`; break;
+    case "book": cmd = `/give @p book ${num}`; break;
+
+    /* 花火 */
     case "firework_rocket_1": cmd = `/give @p firework_rocket{Fireworks:{Flight:1}}`; break;
     case "firework_rocket_2": cmd = `/give @p firework_rocket{Fireworks:{Flight:2}}`; break;
     case "firework_rocket_3": cmd = `/give @p firework_rocket{Fireworks:{Flight:3}}`; break;
-
-    case "gold_ingot": cmd = `/give @p gold_ingot ${num}`; break;
-    case "diamond": cmd = `/give @p diamond ${num}`; break;
-    case "copper_ingot": cmd = `/give @p copper_ingot ${num}`; break;
-    case "redstone": cmd = `/give @p redstone ${num}`; break;
-    case "amethyst_shard": cmd = `/give @p amethyst_shard ${num}`; break;
-    case "lapis_lazuli": cmd = `/give @p lapis_lazuli ${num}`; break;
-    case "netherite_scrap": cmd = `/give @p netherite_scrap ${num}`; break;
-    case "netherite_ingot": cmd = `/give @p netherite_ingot ${num}`; break;
-
-    case "blaze_rod": cmd = `/give @p blaze_rod ${num}`; break;
-    case "axolotl_bucket": cmd = `/give @p axolotl_bucket`; break;
-    case "arrow": cmd = `/give @p arrow ${num}`; break;
-    case "crossbow": cmd = `/give @p crossbow`; break;
-    case "hay_block": cmd = `/give @p hay_block ${num}`; break;
-    case "mace": cmd = `/give @p mace`; break;
   }
 
-  document.getElementById("output").textContent = cmd;
+  output.textContent = cmd;
 }
 
 function copyCommand(){
-  const text = document.getElementById("output").textContent;
+  const text = output.textContent;
   if (!text) return;
   const temp = document.createElement("textarea");
   temp.value = text;
@@ -396,14 +412,3 @@ function copyCommand(){
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
