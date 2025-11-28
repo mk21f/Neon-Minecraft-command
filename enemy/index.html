@@ -298,7 +298,7 @@ function generateHostile() {
       break;
 
     case "pillager":
-      cmd = `execute at @p run summon pillager ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      cmd = `/execute at @a run summon pillager ~ ~2 ~1 {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1,HandItems:[{Count:1,id:"minecraft:crossbow"},{}]}`;
       break;
 
     case "phantom":
@@ -373,4 +373,5 @@ function copyCommand(){
 
 </body>
 </html>
+
 
