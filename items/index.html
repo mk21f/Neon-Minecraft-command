@@ -116,6 +116,7 @@
   <select id="itemSelect" onchange="toggleAmount()">
     <option value="">選択してください</option>
 
+    <!-- 元々のアイテム -->
     <option value="golden_apple">金のリンゴ</option>
     <option value="oak_log">オークの原木</option>
     <option value="iron_shovel">鉄のシャベル</option>
@@ -135,7 +136,7 @@
 
     <option value="wheat_seeds">小麦の種</option>
     <option value="snowball">雪玉</option>
- 　 <option value="book">本</option>
+    <option value="book">本</option>
     <option value="torch">松明</option>
     <option value="coal">石炭</option>
     <option value="bucket">バケツ</option>
@@ -154,10 +155,12 @@
     <option value="bread">パン</option>
     <option value="dried_kelp">干し昆布</option>
     <option value="enchanted_golden_apple">エンチャ金リンゴ</option>
+
     <option value="compass">コンパス</option>
     <option value="map">地図</option>
     <option value="clock">時計</option>
     <option value="sugar_cane">サトウキビ</option>
+
     <option value="ender_chest">エンダーチェスト</option>
     <option value="glass">ガラス</option>
     <option value="scaffolding">足場</option>
@@ -167,13 +170,33 @@
     <option value="shulker_box">シュルカーボックス</option>
     <option value="white_wool">白の羊毛</option>
     <option value="white_carpet">白色のカーペット</option>
+
     <option value="oak_boat">ボート</option>
     <option value="lead">リード</option>
     <option value="saddle">サドル</option>
     <option value="name_tag">名札</option>
+
     <option value="firework_rocket_1">ロケット花火Lv1</option>
     <option value="firework_rocket_2">ロケット花火Lv2</option>
     <option value="firework_rocket_3">ロケット花火Lv3</option>
+
+    <!-- 新規追加アイテム -->
+    <option value="gold_ingot">金インゴット</option>
+    <option value="diamond">ダイヤ</option>
+    <option value="copper_ingot">銅インゴット</option>
+    <option value="redstone">レッドストーン</option>
+    <option value="amethyst_shard">アメジストの欠片</option>
+    <option value="lapis_lazuli">ラピスラズリ</option>
+    <option value="netherite_scrap">ネザライトの破片</option>
+    <option value="netherite_ingot">ネザライトインゴット</option>
+
+    <option value="blaze_rod">ブレイズロッド</option>
+    <option value="axolotl_bucket">ウーパールーパー入りバケツ</option>
+    <option value="arrow">矢</option>
+    <option value="crossbow">クロスボウ</option>
+    <option value="hay_block">小麦の俵</option>
+    <option value="mace">メイス</option>
+
   </select>
 
   <div id="amountBox" style="display:none;">
@@ -198,7 +221,10 @@ function toggleAmount() {
     "milk_bucket","flint_and_steel","ender_pearl",
     "cooked_beef","cooked_porkchop","bread","dried_kelp",
     "enchanted_golden_apple","glass","scaffolding","ladder",
-    "white_wool","white_carpet","sugar_cane"
+    "white_wool","white_carpet","sugar_cane","gold_ingot",
+    "diamond","copper_ingot","redstone","amethyst_shard",
+    "lapis_lazuli","netherite_scrap","arrow","hay_block",
+    "snowball","book"
   ];
 
   if (item === "ender_pearl") {
@@ -248,6 +274,8 @@ function generateItem() {
     case "diamond_boots": cmd = `/item replace entity @p armor.feet with diamond_boots`; break;
 
     case "wheat_seeds": cmd = `/give @p wheat_seeds ${num}`; break;
+    case "snowball": cmd = `/give @p snowball ${num}`; break;
+    case "book": cmd = `/give @p book ${num}`; break;
 
     case "torch": cmd = `/give @p torch ${num}`; break;
     case "coal": cmd = `/give @p coal ${num}`; break;
@@ -295,6 +323,22 @@ function generateItem() {
     case "firework_rocket_1": cmd = `/give @p firework_rocket{Fireworks:{Flight:1}}`; break;
     case "firework_rocket_2": cmd = `/give @p firework_rocket{Fireworks:{Flight:2}}`; break;
     case "firework_rocket_3": cmd = `/give @p firework_rocket{Fireworks:{Flight:3}}`; break;
+
+    case "gold_ingot": cmd = `/give @p gold_ingot ${num}`; break;
+    case "diamond": cmd = `/give @p diamond ${num}`; break;
+    case "copper_ingot": cmd = `/give @p copper_ingot ${num}`; break;
+    case "redstone": cmd = `/give @p redstone ${num}`; break;
+    case "amethyst_shard": cmd = `/give @p amethyst_shard ${num}`; break;
+    case "lapis_lazuli": cmd = `/give @p lapis_lazuli ${num}`; break;
+    case "netherite_scrap": cmd = `/give @p netherite_scrap ${num}`; break;
+    case "netherite_ingot": cmd = `/give @p netherite_ingot ${num}`; break;
+
+    case "blaze_rod": cmd = `/give @p blaze_rod ${num}`; break;
+    case "axolotl_bucket": cmd = `/give @p axolotl_bucket`; break;
+    case "arrow": cmd = `/give @p arrow ${num}`; break;
+    case "crossbow": cmd = `/give @p crossbow`; break;
+    case "hay_block": cmd = `/give @p hay_block ${num}`; break;
+    case "mace": cmd = `/give @p mace`; break;
   }
 
   document.getElementById("output").textContent = cmd;
@@ -315,4 +359,3 @@ function copyCommand(){
 
 </body>
 </html>
-
