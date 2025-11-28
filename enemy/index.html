@@ -349,9 +349,10 @@ function generateHostile() {
       cmd = `execute at @p run summon drowned ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
       break;
 
-    case "dragon":
-      cmd = `execute at @p run summon ender_dragon ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
-      break;
+ case "dragon":
+  cmd = `execute at @p run summon ender_dragon ~ ~2 ~${dist} {DragonPhase:0,CustomName:'{"text":"{nickname}"}',CustomNameVisible:1,Attributes:[{Name:"generic.follow_range",Base:1}]}`;
+  break;
+
 
     default:
       cmd = "MOBを選択してください。";
@@ -377,6 +378,7 @@ function copyCommand(){
 
 </body>
 </html>
+
 
 
 
