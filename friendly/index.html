@@ -13,7 +13,6 @@
     font-family: 'Noto Sans JP', sans-serif;
   }
 
-  /* ▼ 上部ナビ（共通） */
   .top-nav {
     display: flex;
     align-items: center;
@@ -29,7 +28,6 @@
     height: 150px;
   }
 
-  /* ▼ ページ本体 */
   .container {
     max-width: 600px;
     margin: 40px auto;
@@ -43,7 +41,6 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     text-align: left;
   }
-
 
   .title-wrap {
     display: flex;
@@ -98,7 +95,6 @@
 
 <body>
 
-<!-- ▼ 上部ナビ（共通） -->
 <div class="top-nav">
   <a href="../"><img src="../images/neon_rogo_solo.png" class="left-logo" alt="TOP"></a>
 
@@ -112,7 +108,6 @@
 <div class="container">
 <div class="card">
 
-  <!-- ▼ タイトル -->
   <div class="title-wrap">
     <img src="../images/friendly textlogo.png" class="title-logo-big" alt="友好タイトル">
   </div>
@@ -120,13 +115,43 @@
   <label>召喚するMOBを選択：</label>
   <select id="mobSelect">
     <option value="">選択してください</option>
-    <option value="minecraft:iron_golem">アイアンゴーレム</option>
-    <option value="minecraft:sheep">羊</option>
-    <option value="minecraft:wolf">オオカミ</option>
-    <option value="minecraft:villager">村人</option>
-    <option value="minecraft:salmon">サケ</option>
-    <option value="minecraft:chicken">ニワトリ</option>
-    <option value="minecraft:parrot">オウム</option>
+
+    <option value="iron_golem">アイアンゴーレム</option>
+    <option value="sheep">羊</option>
+    <option value="wolf">オオカミ</option>
+    <option value="villager">村人</option>
+    <option value="salmon">サケ</option>
+    <option value="chicken">ニワトリ</option>
+    <option value="parrot">オウム</option>
+
+    <option value="cow">牛</option>
+    <option value="pig">豚</option>
+    <option value="rabbit">ウサギ</option>
+    <option value="goat">ヤギ</option>
+    <option value="armadillo">アルマジロ</option>
+    <option value="turtle">カメ</option>
+    <option value="horse">馬</option>
+    <option value="donkey">ロバ</option>
+    <option value="llama">ラマ</option>
+    <option value="mooshroom">ムーシュルーム</option>
+    <option value="fox">キツネ</option>
+    <option value="cat">猫</option>
+    <option value="panda">パンダ</option>
+    <option value="bee">蜂</option>
+
+    <option value="cod">タラ</option>
+    <option value="pufferfish">フグ</option>
+    <option value="tropical_fish">熱帯魚</option>
+    <option value="dolphin">イルカ</option>
+    <option value="axolotl">ウーパーールーパー</option>
+
+    <option value="allay">アレイ</option>
+    <option value="sniffer">スニッファー</option>
+    <option value="frog">カエル</option>
+    <option value="tadpole">オタマジャクシ</option>
+    <option value="wandering_trader">行商人</option>
+    <option value="trader_llama">行商人のラマ</option>
+    <option value="snow_golem">スノーゴーレム</option>
   </select>
 
   <button class="button" onclick="generateFriendly()">コマンドを生成</button>
@@ -145,7 +170,7 @@ function generateFriendly() {
     return;
   }
 
-  const cmd = `/execute at @p run summon ${mob} ~ ~ ~`;
+  const cmd = `execute at @p run summon ${mob} ~ ~2 ~2 {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
   document.getElementById("output").textContent = cmd;
 }
 
@@ -166,6 +191,3 @@ function copyCommand() {
 
 </body>
 </html>
-
-
-
