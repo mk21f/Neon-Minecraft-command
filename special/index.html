@@ -292,7 +292,7 @@ function copyCommand(){
 
   const temp = document.createElement("textarea");
   temp.value = text;
-  document.body.append.appendChild(temp);
+ document.body.appendChild(temp);  
   temp.select();
   document.execCommand("copy");
   document.body.removeChild(temp);
