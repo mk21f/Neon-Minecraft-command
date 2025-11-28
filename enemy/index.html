@@ -1,57 +1,373 @@
-<label>召喚するMOBを選択：</label>
-<select id="mobSelect">
-  <option value="">選択してください</option>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>敵対MOBコマンド</title>
 
-  <!--  オーバーワールド -->
-  <option disabled>―― オーバーワールド ――</option>
-  <option value="illusioner">イリュージョナー</option>
-  <option value="evoker">エヴォーカー</option>
-  <option value="elder_guardian">エルダーガーディアン</option>
-  <option value="endermite">エンダーマイト</option>
-  <option value="creeper">クリーパー</option>
-  <option value="cave_spider">洞窟グモ</option>
-  <option value="killer_rabbit">殺人ウサギ</option>
-  <option value="silverfish">シルバーフィッシュ</option>
-  <option value="slime_large">スライム(大)</option>
-  <option value="slime_mid">スライム(中)</option>
-  <option value="slime_small">スライム(小)</option>
-  <option value="skeleton">スケルトン</option>
-  <option value="skeleton_rider">スケルトンライダー</option>
-  <option value="spider_jockey">スパイダージョッキー</option>
-  <option value="stray">ストレイ</option>
-  <option value="zombie_villager">村人ゾンビ</option>
-  <option value="pillager">ピリジャー</option>
-  <option value="vindicator">ヴィンディケーター</option>
-  <option value="vex">ヴェックス</option>
-  <option value="witch">ウィッチ</option>
-  <option value="husk">ハスク</option>
-  <option value="phantom">ファントム</option>
-  <option value="ravager">ラヴェジャー</option>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
-  <!--  水中 -->
-  <option disabled>―― 水中 ――</option>
-  <option value="drowned">ドラウンド</option>
-  <option value="elder_guardian">エルダーガーディアン</option>
-  <option value="guardian">ガーディアン</option>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
 
-  <!--  ネザー -->
-  <option disabled>―― ネザー ――</option>
-  <option value="wither_skeleton">ウィザースケルトン</option>
-  <option value="ghast">ガスト</option>
-  <option value="hoglin">ホグリン</option>
-  <option value="zoglin">ゾグリン</option>
-  <option value="piglin_brute">ピグリンブルート</option>
-  <option value="blaze">ブレイズ</option>
-  <option value="breeze">ブリーズ</option>
-  <option value="bogged">ボグド</option>
-  <option value="magma_large">マグマキューブ(大)</option>
-  <option value="magma_mid">マグマキューブ(中)</option>
-  <option value="magma_small">マグマキューブ(小)</option>
+  .top-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 20px 30px 20px;
+  }
 
-  <!--  エンド -->
-  <option disabled>―― エンド ――</option>
-  <option value="endermite">エンダーマイト</option>
-  <option value="dragon">エンダードラゴン</option>
-  <option value="shulker">シュルカー</option>
+  .left-logo {
+    height: 50px;
+  }
 
-</select>
+  .menu-icon {
+    height: 150px;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+  }
+
+  .card {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-align: left;
+  }
+
+  .title-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1px;
+  }
+  .title-logo-big {
+    height: 180px;
+    display: block;
+  }
+
+  select, input[type=range] {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 15px;
+  }
+
+  button.button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2196F3;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .copy-btn {
+    background: #4CAF50;
+    color: #fff;
+    padding: 8px 14px;
+    border: none;
+    margin-top: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  pre.command-output {
+    background: #f3f3f3;
+    padding: 10px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+    margin-top: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="top-nav">
+  <a href="../"><img src="../images/neon_rogo_solo.png" class="left-logo" alt="TOP"></a>
+  <a href="../"><img src="../images/TOP textlogo.png" class="menu-icon"></a>
+  <a href="../special/"><img src="../images/special textlogo.png" class="menu-icon"></a>
+  <a href="../items/"><img src="../images/item textlogo.png" class="menu-icon"></a>
+  <a href="../enemy/"><img src="../images/enemy textlogo.png" class="menu-icon"></a>
+  <a href="../friendly/"><img src="../images/friendly textlogo.png" class="menu-icon"></a>
+</div>
+
+<div class="container">
+<div class="card">
+
+  <div class="title-wrap">
+    <img src="../images/enemy textlogo.png" class="title-logo-big" alt="敵対タイトル">
+  </div>
+
+  <label>召喚するMOBを選択：</label>
+  <select id="mobSelect">
+    <option value="">選択してください</option>
+
+    <!--  オーバーワールド -->
+    <option disabled>―― オーバーワールド ――</option>
+    <option value="illusioner">イリュージョナー</option>
+    <option value="evoker">エヴォーカー</option>
+    <option value="elder_guardian">エルダーガーディアン</option>
+    <option value="endermite">エンダーマイト</option>
+    <option value="creeper">クリーパー</option>
+    <option value="cave_spider">洞窟グモ</option>
+    <option value="killer_rabbit">殺人ウサギ</option>
+    <option value="silverfish">シルバーフィッシュ</option>
+    <option value="slime_small">スライム(小)</option>
+    <option value="slime_mid">スライム(中)</option>
+    <option value="slime_large">スライム(大)</option>
+    <option value="skeleton">スケルトン</option>
+    <option value="skeleton_rider">スケルトンライダー</option>
+    <option value="spider_jockey">スパイダージョッキー</option>
+    <option value="stray">ストレイ</option>
+    <option value="zombie_villager">村人ゾンビ</option>
+    <option value="pillager">ピリジャー</option>
+    <option value="vindicator">ヴィンディケーター</option>
+    <option value="vex">ヴェックス</option>
+    <option value="witch">ウィッチ</option>
+    <option value="husk">ハスク</option>
+    <option value="phantom">ファントム</option>
+    <option value="ravager">ラヴェジャー</option>
+
+    <!--  水中 -->
+    <option disabled>―― 水中 ――</option>
+    <option value="guardian">ガーディアン</option>
+    <option value="elder_guardian">エルダーガーディアン</option>
+    <option value="drowned">ドラウンド</option>
+
+    <!--  ネザー -->
+    <option disabled>―― ネザー ――</option>
+    <option value="blaze">ブレイズ</option>
+    <option value="breeze">ブリーズ</option>
+    <option value="bogged">ボグド</option>
+    <option value="hoglin">ホグリン</option>
+    <option value="zoglin">ゾグリン</option>
+    <option value="piglin_brute">ピグリンブルート</option>
+    <option value="magma_small">マグマキューブ(小)</option>
+    <option value="magma_mid">マグマキューブ(中)</option>
+    <option value="magma_large">マグマキューブ(大)</option>
+    <option value="ghast">ガスト</option>
+    <option value="wither_skeleton">ウィザースケルトン</option>
+
+    <!-- ▼ エンド -->
+    <option disabled>―― エンド ――</option>
+    <option value="dragon">エンダードラゴン</option>
+    <option value="shulker">シュルカー</option>
+    <option value="endermite">エンダーマイト</option>
+  </select>
+
+  <label>距離設定：</label>
+  <input type="range" id="distance" min="1" max="3" value="2"
+    oninput="distanceLabel.textContent = (this.value==1?'近め(2ブロック)':this.value==2?'普通(4ブロック)':'遠め(6ブロック)')">
+
+  <div><strong id="distanceLabel">普通(4ブロック)</strong></div>
+
+  <button class="button" onclick="generateHostile()">コマンドを生成</button>
+
+  <pre class="command-output" id="output"></pre>
+  <button class="copy-btn" onclick="copyCommand()">コピー</button>
+
+</div>
+</div>
+
+<script>
+function generateHostile() {
+  const mob = document.getElementById("mobSelect").value;
+  const distOption = document.getElementById("distance").value;
+
+  const dist = distOption == 1 ? 2 : distOption == 2 ? 4 : 6;
+
+  let cmd = "";
+
+  switch(mob){
+
+    case "slime_small":
+      cmd = `execute at @p run summon slime ~ ~2 ~${dist} {Size:1,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "slime_mid":
+      cmd = `execute at @p run summon slime ~ ~2 ~${dist} {Size:2,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "slime_large":
+      cmd = `execute at @p run summon slime ~ ~2 ~${dist} {Size:4,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+
+    case "magma_small":
+      cmd = `execute at @p run summon magma_cube ~ ~2 ~${dist} {Size:1,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "magma_mid":
+      cmd = `execute at @p run summon magma_cube ~ ~2 ~${dist} {Size:2,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "magma_large":
+      cmd = `execute at @p run summon magma_cube ~ ~2 ~${dist} {Size:4,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+
+    case "wither_skeleton":
+      cmd = `execute at @p run summon wither_skeleton ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "skeleton_rider":
+      cmd = `execute at @p run summon skeleton_horse ~ ~2 ~${dist} {SkeletonTrap:1,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+      
+    case "witch":
+      cmd = `execute at @p run summon witch ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "vindicator":
+      cmd = `execute at @p run summon vindicator ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "vex":
+      cmd = `execute at @p run summon vex ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "evoker":
+      cmd = `execute at @p run summon evoker ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "elder_guardian":
+      cmd = `execute at @p run summon elder_guardian ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "guardian":
+      cmd = `execute at @p run summon guardian ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "endermite":
+      cmd = `execute at @p run summon endermite ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "ghast":
+      cmd = `execute at @p run summon ghast ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "creeper":
+      cmd = `execute at @p run summon creeper ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "shulker":
+      cmd = `execute at @p run summon shulker ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "silverfish":
+      cmd = `execute at @p run summon silverfish ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "stray":
+      cmd = `execute at @p run summon stray ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "spider_jockey":
+      cmd = `execute at @p run summon spider ~ ~2 ~${dist} {Passengers:[{id:"skeleton"}],CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "zoglin":
+      cmd = `execute at @p run summon zoglin ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "chicken_jockey":
+      cmd = `execute at @p run summon zombie ~ ~2 ~${dist} {IsBaby:1,Passengers:[{id:"chicken"}],CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "husk":
+      cmd = `execute at @p run summon husk ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "piglin_brute":
+      cmd = `execute at @p run summon piglin_brute ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "pillager":
+      cmd = `execute at @p run summon pillager ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "phantom":
+      cmd = `execute at @p run summon phantom ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "breeze":
+      cmd = `execute at @p run summon breeze ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "blaze":
+      cmd = `execute at @p run summon blaze ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "bogged":
+      cmd = `execute at @p run summon bogged ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "hoglin":
+      cmd = `execute at @p run summon hoglin ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "zombie_villager":
+      cmd = `execute at @p run summon zombie_villager ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "ravager":
+      cmd = `execute at @p run summon ravager ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "illusioner":
+      cmd = `execute at @p run summon illusioner ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "killer_rabbit":
+      cmd = `execute at @p run summon rabbit ~ ~2 ~${dist} {RabbitType:99,CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "cave_spider":
+      cmd = `execute at @p run summon cave_spider ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "drowned":
+      cmd = `execute at @p run summon drowned ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    case "dragon":
+      cmd = `execute at @p run summon ender_dragon ~ ~2 ~${dist} {CustomName:'{"text":"{nickname}"}',PersistenceRequired:1,CustomNameVisible:1}`;
+      break;
+
+    default:
+      cmd = "MOBを選択してください。";
+  }
+
+  document.getElementById("output").textContent = cmd;
+}
+
+function copyCommand(){
+  const output = document.getElementById("output").textContent;
+  if (!output) return;
+
+  const temp = document.createElement("textarea");
+  temp.value = output;
+  document.body.appendChild(temp);
+  temp.select();
+  document.execCommand("copy");
+  document.body.removeChild(temp);
+
+  alert("📋 コマンドをコピーしました！");
+}
+</script>
+
+</body>
+</html>
